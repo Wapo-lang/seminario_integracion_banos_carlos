@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 authors = [
-    { name = "Wapo-lang", email = "cdavid107@hotmail.com" }
+    { name = "NothingKrisptes", email = "iancm0168@gmail.com" }
 ]
 requires-python = ">=3.12"
 dependencies = [
