@@ -1,32 +1,32 @@
-# app/main.py
-from fastapi import FastAPI
+from fastapi import APIRouter
 from pydantic import BaseModel
 
-router = ApiRouter()
-
+router = APIRouter()
 
 class Mensaje(BaseModel):
     texto: str
     prioridad: int = 1
-    campo_interno: str
+    campo_interno: str 
 
-@app.get("/")
+@router.get("/")
 def read_root() -> dict[str, str]:
-    return {"mensaje": "Hola desde FastAPI + uv",
-            "autor": "Carlos Baños",
-            "version": "0.13.7"}
+    return {"mensaje": "Hola desde FastAPI + uv", 
+            "autor":"Carlos Baños",
+            "version" : "0.1.0"}
 
-@app.get("/carlos")
+@router.get("/carlos")
 def endpoint_carlos() -> Mensaje:
-    return Mensaje(texto="Hola")
+    return Mensaje(texto="Hola Carlos", campo_interno= "desde Carlos link")
 
-@app.get("/banos", response_model=Mensaje)
+@router.get("/banos", response_model=Mensaje)
 def endpoint_banos():
-    return {"texto": "Hola", "prioridad": 5, "campo_interno": "no debería salir"}
+    return {"texto": "Hola Baños", 
+            "prioridad": 5, 
+            "campo_interno": "imprime desde endpoint canar"}
 
-@app.get("/campo-extra", response_model=Mensaje)
+@router.get("/campo-extra", response_model=Mensaje)
 def endpoint_campo_extra():
-    return {"texto": "Hola Carlos",
-             "prioridad": 5, 
-             "campo_interno": "si debe salir incluido el modelo",
-             "campo_externo": "no debería salir"}
+    return {"texto": "Hola Baños", 
+            "prioridad": 5, 
+            "campo_interno": "si debe salir incluido en el modelo", 
+            "campo_extra":"no deberia salir"}
