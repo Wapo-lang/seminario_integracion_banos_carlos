@@ -1,10 +1,9 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
-from routers.hello_world import router
-from routers.tasks_router import tasks_router
+from src.routers.hello_world_mp import router
+from src.routers.tasks_router_mp import flights_router
 
-app = FastAPI(title="Curso FastAPI + uv")
+app = FastAPI(title="Control de vuelos del aeropuerto")
 
 
 app.include_router(router)
-app.include_router(tasks_router)
+app.include_router(flights_router)
